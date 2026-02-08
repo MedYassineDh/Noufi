@@ -1,0 +1,19 @@
+{
+  "name": "noufi-game",
+  "version": "1.0.0",
+  "description": "Noufi - Premium online card game casino",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "start-backend": "cd backend && npm start",
+    "start-frontend": "cd frontend/public && python3 -m http.server 8080",
+    "dev-backend": "cd backend && npm run dev",
+    "start": "echo 'Starting Noufi Game...' && npm run start-backend"
+  },
+  "keywords": ["casino", "card-game", "noufi", "multiplayer", "socket.io"],
+  "author": "Noufi Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/noufi-game.git"
+  }
+}

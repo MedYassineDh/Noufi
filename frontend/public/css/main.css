@@ -1,0 +1,236 @@
+/* Noufi - Main Styles */
+/* Luxury Casino Theme with Art Deco Influences */
+
+:root {
+    /* Colors - Luxury Gold & Deep Red Palette */
+    --gold-primary: #D4AF37;
+    --gold-light: #F4E4A6;
+    --gold-dark: #B8941E;
+    --red-primary: #8B0000;
+    --red-dark: #5C0000;
+    --black-primary: #0A0A0A;
+    --black-light: #1A1A1A;
+    --white-cream: #FAF8F3;
+    --green-felt: #0A4D2E;
+    
+    /* Typography */
+    --font-display: 'Cinzel', serif;
+    --font-elegant: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Shadows */
+    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.5);
+    --shadow-deep: 0 10px 40px rgba(0, 0, 0, 0.8);
+    --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--black-primary);
+    color: var(--white-cream);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Screen Management */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-play,
+.btn-action {
+    position: relative;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid var(--gold-primary);
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
+    color: var(--black-primary);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-gold);
+}
+
+.btn-primary::before,
+.btn-play::before,
+.btn-action::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before,
+.btn-play:hover::before,
+.btn-action:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:hover,
+.btn-play:hover,
+.btn-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+}
+
+.btn-primary:active,
+.btn-play:active,
+.btn-action:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled,
+.btn-play:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Particles Background */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-primary);
+    border-radius: 50%;
+    animation: float 10s infinite;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Loader */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(212, 175, 55, 0.2);
+    border-top: 5px solid var(--gold-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto var(--spacing-sm);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Glow Effect */
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 10px var(--gold-primary);
+    }
+    50% {
+        box-shadow: 0 0 30px var(--gold-primary);
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        font-size: 14px;
+    }
+    
+    .btn-primary,
+    .btn-play,
+    .btn-action {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 12px;
+    }
+}

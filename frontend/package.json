@@ -1,0 +1,17 @@
+{
+  "name": "noufi-frontend",
+  "version": "1.0.0",
+  "description": "Noufi Card Game Frontend - Luxury Casino Experience",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "serve": "npx serve public -p 8080"
+  },
+  "keywords": ["casino", "card-game", "frontend"],
+  "author": "Noufi Team",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io-client": "^4.6.1",
+    "howler": "^2.2.3"
+  }
+}

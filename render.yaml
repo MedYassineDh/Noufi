@@ -1,0 +1,49 @@
+services:
+  # Backend Service
+  - type: web
+    name: noufi-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: DEFAULT_STARTING_BALANCE
+        value: 1000
+      - key: BOT_WIN_RATE
+        value: 0.65
+      - key: MATCHMAKING_TIMEOUT
+        value: 20000
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: noufi-frontend
+          property: host
+
+  # Frontend Service
+  - type: web
+    name: noufi-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: echo "No build required"
+    staticPublishPath: ./frontend/public
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
